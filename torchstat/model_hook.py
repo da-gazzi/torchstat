@@ -44,7 +44,7 @@ class ModelHook(object):
             assert module.__class__ in self._origin_call
 
             # Itemsize for memory
-            itemsize = input[0].detach().numpy().itemsize
+            itemsize = input[0].detach().cpu().numpy().itemsize
 
             start = time.time()
             output = self._origin_call[module.__class__](module, *input, **kwargs)
